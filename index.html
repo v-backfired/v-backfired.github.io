@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ==============================
+     ЗАГОЛОВОК ВКЛАДКИ В БРАУЗЕРЕ
+     Измени "Backfired" на своё имя
+     ============================== -->
+<title>Backfired — Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ==============================
+     ЦВЕТА САЙТА
+     Можно менять значения после #
+     --bg: цвет фона
+     --accent: золотистый акцент
+     --accent2: фиолетовый акцент
+     ============================== */
+  :root {
+    --bg: #0d0c0e;
+    --surface: #141318;
+    --border: rgba(255,255,255,0.07);
+    --text: #e8e4df;
+    --muted: rgba(232,228,223,0.45);
+    --accent: #c9a97a;
+    --accent2: #8b7ab8;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 60px 40px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 64px;
+    padding-bottom: 24px;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+
+  .name span { color: var(--accent); font-style: italic; }
+
+  .tagline {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  .hero { position: relative; margin-bottom: 12px; overflow: hidden; border-radius: 4px; cursor: pointer; }
+  .hero img { width: 100%; display: block; transition: transform 0.6s ease; }
+  .hero:hover img { transform: scale(1.02); }
+
+  .hero-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 40px 28px 24px;
+    background: linear-gradient(transparent, rgba(13,12,14,0.85));
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .hero-label h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 0.5px solid var(--accent);
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+  .tag.order { color: #7ec8a0; border-color: #7ec8a0; }
+  .tag.fanart { color: var(--accent2); border-color: var(--accent2); }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+  .card { position: relative; overflow: hidden; border-radius: 4px; cursor: pointer; }
+  .card img { width: 100%; height: 320px; object-fit: cover; object-position: top; display: block; transition: transform 0.6s ease; }
+  .grid-3 .card img { height: 240px; }
+  .card:hover img { transform: scale(1.04); }
+
+  .card-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 32px 16px 14px;
+    background: linear-gradient(transparent, rgba(13,12,14,0.8));
+  }
+
+  .card-label h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 4px;
+  }
+
+  .card-label p { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
+
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p { font-size: 12px; color: var(--muted); letter-spacing: 0.12em; }
+  .contact { font-size: 12px; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; }
+
+  .lb { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 100; align-items: center; justify-content: center; cursor: pointer; }
+  .lb.open { display: flex; }
+  .lb img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<!-- ==============================
+     ШАПКА САЙТА
+     Измени "Backfired" на своё имя/ник
+     Измени текст справа на свои специализации
+     ============================== -->
+<header>
+  <div class="name">Back<span>fired</span></div>
+  <div class="tagline">
+    Character artist · Illustrator<br>
+    <div class="contact">Commissions open</div><br>
+	vladbackfired@gmail.com<br>
+	tg: @v_backfired<br>
+  </div>
+</header>
+
+
+<!-- ==============================
+     ГЛАВНАЯ (HERO) РАБОТА — самая большая
+     src="images/toyo.png" — имя файла картинки в папке images/
+     alt="..." — описание для поисковиков, можно любое
+     Текст внутри hero-label — подпись под картинкой
+     class="tag order" — зелёный тег (заказ)
+     class="tag" — золотой тег (оригинал)
+     class="tag fanart" — фиолетовый тег (фанарт)
+     ============================== -->
+<div class="hero" onclick="openLb(this.querySelector('img').src)">
+  <img src="images/toyo.png" alt="Toyota girl — character design">
+  <div class="hero-label">
+    <h2>Toyota girl — character design</h2>
+    <span class="tag order">commission</span>
+  </div>
+</div>
+
+
+<!-- ==============================
+     СРЕДНИЙ РЯД — 2 карточки рядом
+     Чтобы поменять картинку: замени имя файла в src="images/ИМЯ.png"
+     Чтобы поменять подпись: замени текст в <h3> и <p>
+     ============================== -->
+<div class="grid">
+
+  <div class="card" onclick="openLb(this.querySelector('img').src)">
+    <img src="images/diana.png" alt="Grand Diana">
+    <div class="card-label">
+      <h3>Grand Diana</h3>
+      <p>original character</p>
+    </div>
+  </div>
+
+  <div class="card" onclick="openLb(this.querySelector('img').src)">
+    <img src="images/duo.png" alt="Duo">
+    <div class="card-label">
+      <h3>Duo</h3>
+      <span class="tag order">commission</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ==============================
+     НИЖНИЙ РЯД — 3 карточки рядом
+     Работает так же как средний ряд
+     ============================== -->
+<div class="grid-3">
+
+  <div class="card" onclick="openLb(this.querySelector('img').src)">
+    <img src="images/lumine_space.jpg" alt="Lumine Spacebird">
+    <div class="card-label">
+      <h3>Lumine · space</h3>
+      <p>genshin fanart</p>
+      <span class="tag fanart" style="margin-top:6px; display:inline-block;">fanart</span>
+    </div>
+  </div>
+
+  <div class="card" onclick="openLb(this.querySelector('img').src)">
+    <img src="images/lumine_sky.png" alt="Lumine Sky">
+    <div class="card-label">
+      <h3>Lumine · sky</h3>
+      <p>genshin fanart</p>
+      <span class="tag fanart" style="margin-top:6px; display:inline-block;">fanart</span>
+    </div>
+  </div>
+
+  <div class="card" onclick="openLb(this.querySelector('img').src)">
+    <img src="images/lens.png" alt="Lens">
+    <div class="card-label">
+      <h3>Lens</h3>
+      <span class="tag order">commission</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ==============================
+     ПОДВАЛ САЙТА
+     Измени текст копирайта и текст справа
+     ============================== -->
+<footer>
+  <p>© Backfired · все права защищены</p>
+  <div class="contact">открыта для заказов</div>
+</footer>
+
+
+<!-- Лайтбокс — не трогай, это просто увеличение картинки по клику -->
+<div class="lb" id="lb" onclick="closeLb()">
+  <img id="lb-img" src="" alt="">
+</div>
+<script>
+function openLb(src) { document.getElementById('lb-img').src = src; document.getElementById('lb').classList.add('open'); }
+function closeLb() { document.getElementById('lb').classList.remove('open'); }
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLb(); });
+</script>
+
+</body>
+</html>
