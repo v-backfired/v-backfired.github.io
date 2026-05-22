@@ -10,26 +10,25 @@
      ============================== -->
 <title>Backfired — Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   /* ==============================
      ЦВЕТА САЙТА
-     Можно менять значения после #
-     --bg: цвет фона
-     --accent: золотистый акцент
-     --accent2: фиолетовый акцент
+     --bg: фон (чернильно-синий из лого)
+     --accent: янтарно-золотой из лого
+     --text: кремовый текст
      ============================== */
   :root {
-    --bg: #0d0c0e;
-    --surface: #141318;
-    --border: rgba(255,255,255,0.07);
-    --text: #e8e4df;
-    --muted: rgba(232,228,223,0.45);
-    --accent: #c9a97a;
-    --accent2: #8b7ab8;
+    --bg: #111622;
+    --surface: #181f2e;
+    --border: rgba(232,168,0,0.15);
+    --text: #f0e6d0;
+    --muted: rgba(240,230,208,0.45);
+    --accent: #E8A800;
+    --accent2: #c4a8e0;
   }
 
   body {
@@ -46,31 +45,65 @@
   header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     margin-bottom: 64px;
     padding-bottom: 24px;
     border-bottom: 0.5px solid var(--border);
   }
 
-  .name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 52px;
-    font-weight: 300;
-    letter-spacing: 0.04em;
-    line-height: 1;
+  /* ==============================
+     ШАПКА — левая часть с лого
+     ============================== */
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
   }
 
-  .name span { color: var(--accent); font-style: italic; }
+  .logo-img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+  }
 
+  .name {
+    font-family: 'Jost', sans-serif;
+    font-size: 44px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    line-height: 1;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  .name span {
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  /* ==============================
+     ШАПКА — правая часть контакты
+     ============================== */
   .tagline {
     font-size: 12px;
     color: var(--muted);
-    letter-spacing: 0.2em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     text-align: right;
-    line-height: 1.8;
+    line-height: 2;
   }
 
+  .tagline a {
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.15em;
+  }
+
+  .tagline a:hover { opacity: 0.8; }
+
+  /* ==============================
+     ГЛАВНАЯ РАБОТА (hero)
+     ============================== */
   .hero { position: relative; margin-bottom: 12px; overflow: hidden; border-radius: 4px; cursor: pointer; }
   .hero img { width: 100%; display: block; transition: transform 0.6s ease; }
   .hero:hover img { transform: scale(1.02); }
@@ -79,19 +112,26 @@
     position: absolute;
     bottom: 0; left: 0; right: 0;
     padding: 40px 28px 24px;
-    background: linear-gradient(transparent, rgba(13,12,14,0.85));
+    background: linear-gradient(transparent, rgba(17,22,34,0.9));
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
   }
 
   .hero-label h2 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 26px;
-    font-weight: 300;
+    font-weight: 400;
     font-style: italic;
+    color: var(--text);
   }
 
+  /* ==============================
+     ТЕГИ НА КАРТОЧКАХ
+     .tag         — янтарный (оригинал)
+     .tag.order   — зелёный (заказ)
+     .tag.fanart  — лавандовый (фанарт)
+     ============================== */
   .tag {
     font-size: 10px;
     letter-spacing: 0.18em;
@@ -104,6 +144,9 @@
   .tag.order { color: #7ec8a0; border-color: #7ec8a0; }
   .tag.fanart { color: var(--accent2); border-color: var(--accent2); }
 
+  /* ==============================
+     СЕТКИ КАРТОЧЕК
+     ============================== */
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
   .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
 
@@ -116,19 +159,23 @@
     position: absolute;
     bottom: 0; left: 0; right: 0;
     padding: 32px 16px 14px;
-    background: linear-gradient(transparent, rgba(13,12,14,0.8));
+    background: linear-gradient(transparent, rgba(17,22,34,0.85));
   }
 
   .card-label h3 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 400;
     font-style: italic;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+    color: var(--text);
   }
 
-  .card-label p { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
+  .card-label p { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 4px; }
 
+  /* ==============================
+     ПОДВАЛ
+     ============================== */
   footer {
     margin-top: 64px;
     padding-top: 24px;
@@ -141,6 +188,7 @@
   footer p { font-size: 12px; color: var(--muted); letter-spacing: 0.12em; }
   .contact { font-size: 12px; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; }
 
+  /* Лайтбокс */
   .lb { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 100; align-items: center; justify-content: center; cursor: pointer; }
   .lb.open { display: flex; }
   .lb img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 4px; }
@@ -150,28 +198,28 @@
 
 <!-- ==============================
      ШАПКА САЙТА
-     Измени "Backfired" на своё имя/ник
-     Измени текст справа на свои специализации
+     Измени текст справа — специализации и контакты
      ============================== -->
 <header>
-  <div class="name">Back<span>fired</span></div>
+  <div class="header-left">
+    <img class="logo-img" src="images/logo.png" alt="Backfired logo">
+    <div class="name">Back<span>fired</span></div>
+  </div>
   <div class="tagline">
     Character artist · Illustrator<br>
-    <div class="contact">Commissions open</div><br>
-	vladbackfired@gmail.com<br>
-	tg: @v_backfired<br>
+    <a href="mailto:vladbackfired@gmail.com">vladbackfired@gmail.com</a><br>
+    tg: <a href="https://t.me/v_backfired">@v_backfired</a><br>
+    <span style="color: var(--accent); font-weight: 500;">Commissions open</span>
   </div>
 </header>
 
 
 <!-- ==============================
      ГЛАВНАЯ (HERO) РАБОТА — самая большая
-     src="images/toyo.png" — имя файла картинки в папке images/
-     alt="..." — описание для поисковиков, можно любое
-     Текст внутри hero-label — подпись под картинкой
+     src="images/toyo.png" — имя файла
      class="tag order" — зелёный тег (заказ)
-     class="tag" — золотой тег (оригинал)
-     class="tag fanart" — фиолетовый тег (фанарт)
+     class="tag"       — янтарный тег (оригинал)
+     class="tag fanart"— лавандовый тег (фанарт)
      ============================== -->
 <div class="hero" onclick="openLb(this.querySelector('img').src)">
   <img src="images/toyo.png" alt="Toyota girl — character design">
@@ -183,9 +231,7 @@
 
 
 <!-- ==============================
-     СРЕДНИЙ РЯД — 2 карточки рядом
-     Чтобы поменять картинку: замени имя файла в src="images/ИМЯ.png"
-     Чтобы поменять подпись: замени текст в <h3> и <p>
+     СРЕДНИЙ РЯД — 2 карточки
      ============================== -->
 <div class="grid">
 
@@ -209,8 +255,7 @@
 
 
 <!-- ==============================
-     НИЖНИЙ РЯД — 3 карточки рядом
-     Работает так же как средний ряд
+     НИЖНИЙ РЯД — 3 карточки
      ============================== -->
 <div class="grid-3">
 
@@ -244,8 +289,7 @@
 
 
 <!-- ==============================
-     ПОДВАЛ САЙТА
-     Измени текст копирайта и текст справа
+     ПОДВАЛ
      ============================== -->
 <footer>
   <p>© Backfired · все права защищены</p>
@@ -253,7 +297,7 @@
 </footer>
 
 
-<!-- Лайтбокс — не трогай, это просто увеличение картинки по клику -->
+<!-- Лайтбокс — не трогай -->
 <div class="lb" id="lb" onclick="closeLb()">
   <img id="lb-img" src="" alt="">
 </div>
